@@ -41,6 +41,8 @@ const userSchema = new Schema(
 );
 
 // set up pre-save middleware to create password
+//middlwared captures our date before getting to or coming from the database and manipulating it
+
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
